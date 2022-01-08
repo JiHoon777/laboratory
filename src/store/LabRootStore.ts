@@ -1,5 +1,6 @@
 import { computed, makeObservable } from "mobx";
 import { ContextMenuStore } from "./projects/contextMenu/ContextMenuStore";
+import { ProjectEnum } from "./projects/projectEnum";
 
 export class LabRootStore {
   contextMenuStore: ContextMenuStore;
@@ -17,6 +18,10 @@ export class LabRootStore {
       {
         projectName: this.contextMenuStore.projectName,
         projectDesc: this.contextMenuStore.projectDesc,
+      },
+      {
+        projectName: ProjectEnum.Infinite,
+        projectDesc: "인피니트 스크롤 ㅋㅋ",
       },
     ];
   }
