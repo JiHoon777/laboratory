@@ -19,7 +19,14 @@ export class ContextMenuStore extends BaseProjectStore {
   }
 
   closeContextInMenus() {
+    // showContext 가 true 인 것만 뽑아낸다.
     const menus = this.contextMenus.filter((menu) => menu.showContext);
+
+    // menus 가 없다면 return
+    if (!menus || menus.length === 0) {
+      return;
+    }
+
     menus.forEach((menu) => {
       menu.setShowContext(false);
     });
