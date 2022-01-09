@@ -12,7 +12,7 @@ export interface IListForInfinite<T> {
   totalCount: number;
 }
 
-const mockListForInfinite: IItemForInfinite[] = Array(50)
+const mockListForInfinite: IItemForInfinite[] = Array(52)
   .fill("")
   .map((_, index) => ({
     id: index,

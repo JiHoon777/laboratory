@@ -23,6 +23,10 @@ export class LabRootStore {
         projectName: ProjectEnum.Infinite,
         projectDesc: "인피니트 스크롤 ㅋㅋ",
       },
+      {
+        projectName: ProjectEnum.ScrollSpy,
+        projectDesc: "Is scrollSpy",
+      },
     ];
   }
 }

@@ -5,6 +5,7 @@ import { SiteUrls } from "../utils/SiteUrls";
 import { ProjectEnum } from "../store/projects/projectEnum";
 import { ContextMenu } from "./contextMenu/ContextMenu";
 import { InfiniteScroll } from "./infiniteScroll/InfiniteScroll";
+import { ScrollSpy } from "./scrollSpy/ScrollSpy";
 
 interface IProjectRootProps {}
 
@@ -13,10 +14,12 @@ export const ProjectRoot: React.FC<IProjectRootProps> = observer((props) => {
 
   const isContextMenu = match?.params.project === ProjectEnum.ContextMenu;
   const isInfinite = match?.params.project === ProjectEnum.Infinite;
+  const isScrollSpy = match?.params.project === ProjectEnum.ScrollSpy;
   return (
-    <div className={"flex flex-col flex-1 overflow-y-auto"}>
+    <>
       {isContextMenu && <ContextMenu />}
       {isInfinite && <InfiniteScroll />}
-    </div>
+      {isScrollSpy && <ScrollSpy />}
+    </>
   );
 });

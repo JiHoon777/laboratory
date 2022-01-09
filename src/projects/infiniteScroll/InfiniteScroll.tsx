@@ -9,7 +9,7 @@ export const InfiniteScroll: React.FC<IInfiniteScrollProps> = (props) => {
     useInfiniteScroll(listForInfinite);
 
   return (
-    <div className={"w-full h-full"}>
+    <div className={"overflow-y-auto"}>
       {list.map((item) => {
         return (
           <div

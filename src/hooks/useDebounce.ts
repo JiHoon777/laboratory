@@ -8,7 +8,7 @@ export function useDebounce() {
       clearTimeout(timeoutRef.current);
     }
 
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       func();
     }, time);
   };
