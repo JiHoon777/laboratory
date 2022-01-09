@@ -19,7 +19,6 @@ export const ItemForScrollSpy: React.FC<IItemForScrollSpyProps> = (props) => {
     async ([{ isIntersecting }]) => {
       if (isIntersecting) {
         setCurrentIndex(index);
-        console.log("hi " + index);
       }
     },
     {

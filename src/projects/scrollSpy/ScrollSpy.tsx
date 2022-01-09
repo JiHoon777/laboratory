@@ -33,7 +33,7 @@ export const ScrollSpy: React.FC<IScrollSpyProps> = (props) => {
     spyItems.current[index] = ele;
   };
 
-  const list = Array(10).fill("");
+  const list = Array.from({ length: 10 });
   return (
     <>
       <div className={"flex w-full"}>
