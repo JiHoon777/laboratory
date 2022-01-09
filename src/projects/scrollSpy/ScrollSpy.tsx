@@ -11,7 +11,7 @@ export const ScrollSpy: React.FC<IScrollSpyProps> = (props) => {
 
   // 영역별 ref 를 저장하기 위한 ref
   const spyItems = React.useRef<{
-    [key: number]: React.MutableRefObject<HTMLDivElement>;
+    [key: number]: HTMLDivElement;
   }>({});
 
   // 현재 보고 있는 영역의 index
@@ -22,14 +22,12 @@ export const ScrollSpy: React.FC<IScrollSpyProps> = (props) => {
       return;
     }
 
-    const top = spyItems.current[index]?.current.offsetTop ?? 0;
-    containerRef.current.scrollTo({ behavior: "smooth", top });
+    spyItems.current[index]?.scrollIntoView({ behavior: "smooth" });
+    // const top = spyItems.current[index]?.offsetTop ?? 0;
+    // containerRef.current.scrollTo({ behavior: "smooth", top });
   };
 
-  const addToSpyItems = (
-    index: number,
-    ele: React.MutableRefObject<HTMLDivElement>
-  ) => {
+  const addToSpyItems = (index: number, ele: HTMLDivElement) => {
     spyItems.current[index] = ele;
   };
 
@@ -54,6 +52,9 @@ export const ScrollSpy: React.FC<IScrollSpyProps> = (props) => {
       <div
         className={"overflow-y-auto"}
         ref={containerRef}
+        onWheel={(e) => {
+          // console.log(e.deltaY);
+        }}
         onScroll={(e) => {
           // if (containerRef.current) {
           //   handleDebounce(

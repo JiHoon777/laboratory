@@ -4,15 +4,12 @@ import classNames from "classnames";
 interface IItemForScrollSpyProps {
   index: number;
   setCurrentIndex: (currentIndex: number) => void;
-  addToSpyItems: (
-    index: number,
-    ele: React.MutableRefObject<HTMLDivElement>
-  ) => void;
+  addToSpyItems: (index: number, ele: HTMLDivElement) => void;
 }
 
 export const ItemForScrollSpy: React.FC<IItemForScrollSpyProps> = (props) => {
   const { index, setCurrentIndex, addToSpyItems } = props;
-  const itemRef = React.useRef<HTMLDivElement | null>(null);
+  // const itemRef = React.useRef<HTMLDivElement | null>(null);
   const SpyTrigger = React.useRef<HTMLDivElement | null>(null);
 
   const SpyObserver = new IntersectionObserver(
@@ -38,24 +35,24 @@ export const ItemForScrollSpy: React.FC<IItemForScrollSpyProps> = (props) => {
     }
   }, [SpyTrigger.current]);
 
-  React.useEffect(() => {
-    if (!itemRef.current) {
-      return;
-    }
-
-    addToSpyItems(index, itemRef as React.MutableRefObject<HTMLDivElement>);
-  }, [itemRef.current]);
+  // React.useEffect(() => {
+  //   if (!itemRef.current) {
+  //     return;
+  //   }
+  //
+  //   addToSpyItems(index, itemRef as React.MutableRefObject<HTMLDivElement>);
+  // }, [itemRef.current]);
 
   return (
     <div
-      ref={itemRef}
+      ref={(ref) => ref && addToSpyItems(index, ref)}
       className={classNames(
         "w-screen h-screen flex justify-center items-center relative"
       )}
       style={{ backgroundColor: "pink", borderBottom: "1px solid black" }}
     >
       <div>{index}</div>
-      <div ref={SpyTrigger} className={"absolute bottom-0 left-0"} />
+      <div ref={SpyTrigger} className={"absolute bottom-2/4 left-0"} />
     </div>
   );
 };
